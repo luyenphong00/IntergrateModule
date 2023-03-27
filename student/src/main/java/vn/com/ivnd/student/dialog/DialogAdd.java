@@ -43,7 +43,7 @@ public class DialogAdd extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setCancelable(false);
-        return inflater.inflate(R.layout.dialog_edit, container);
+        return inflater.inflate(R.layout.dialog_add, container);
     }
 
     @io.reactivex.annotations.NonNull
