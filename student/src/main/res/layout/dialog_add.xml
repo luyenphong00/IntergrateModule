@@ -44,7 +44,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
             android:background="#00D9FF"
-            android:text="Sửa dữ liệu"
+            android:text="Thêm dữ liệu"
             app:layout_constraintEnd_toStartOf="@+id/btn_cancel"
             app:layout_constraintStart_toStartOf="parent"
 
