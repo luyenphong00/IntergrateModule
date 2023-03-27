@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="vn.com.ivnd.student">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application>
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:usesCleartextTraffic="true"
+            android:name=".LoginActivity"
+            android:exported="true" />
+
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:usesCleartextTraffic="true"
+            android:name=".ModuleMainActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>
