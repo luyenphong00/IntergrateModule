@@ -33,11 +33,7 @@ public class ModuleMainActivity extends AppCompatActivity implements MainContrac
         adapter = new StudentAdapter(students, ModuleMainActivity.this, new StudentAdapter.onClickItem() {
             @Override
             public void onClickEdit(Student student) {
-                DialogEdit dialogEdit = new DialogEdit(student, (name, classRoom) -> {
-                    student.setName(name);
-                    student.setClassRoom(classRoom);
-                    presenter.editStudent(student);
-                });
+                DialogEdit dialogEdit = new DialogEdit(student, student1 -> presenter.editStudent(student1));
                 dialogEdit.show(getSupportFragmentManager(), dialogEdit.getTag());
             }
 

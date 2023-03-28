@@ -64,18 +64,24 @@ public class DialogAdd extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final EditText edtName, edtClassRoom;
+        final EditText edtName, edtClassRoom, edtNS, edtQQ, edtCCCD;
         Button btnEdit,btnCancel;
         edtName = getView().findViewById(R.id.edt_name);
         edtClassRoom = getView().findViewById(R.id.edt_class);
+        edtNS = getView().findViewById(R.id.ns);
+        edtQQ = getView().findViewById(R.id.qq);
+        edtCCCD = getView().findViewById(R.id.cccd);
         btnEdit = getView().findViewById(R.id.btn_edit);
         btnCancel = getView().findViewById(R.id.btn_cancel);
         btnEdit.setOnClickListener(view1 -> {
             if (listener != null) {
                 String name = edtName.getText().toString();
                 String classRoom = edtClassRoom.getText().toString();
-                if (!name.isEmpty() && !classRoom.isEmpty()){
-                    student = new Student(name, classRoom);
+                String ngaysinh = edtNS.getText().toString();
+                String quequan = edtQQ.getText().toString();
+                String cccd = edtCCCD.getText().toString();
+                if (!name.isEmpty() && !classRoom.isEmpty() && !ngaysinh.isEmpty() && !quequan.isEmpty() && !cccd.isEmpty()){
+                    student = new Student(name, classRoom, ngaysinh, quequan, cccd);
                     listener.onClickAdd(student);
                     dismiss();
                 }else  {

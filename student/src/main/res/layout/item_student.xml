@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:maxLines="1"
-        android:text="Luyện Phong"
+        android:text="Name1"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/tv_edit"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:text="CT1B_KMA"
+        android:text="CT1"
         app:layout_constraintStart_toStartOf="@id/tv_full_name"
         app:layout_constraintTop_toBottomOf="@id/tv_full_name" />
 

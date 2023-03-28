@@ -18,10 +18,40 @@ public class Student {
     private String name;
     @ColumnInfo(name = "classRoom")
     private String classRoom;
+    @ColumnInfo(name = "ngaysinh")
+    private String ngaysinh;
+    @ColumnInfo(name = "quequan")
+    private String quequan;
+    @ColumnInfo(name = "cccd")
+    private String cccd;
 
-    public Student( String name, String classRoom) {
+    public Student(String name, String classRoom, String ngaysinh, String quequan, String cccd) {
         this.name = name;
         this.classRoom = classRoom;
+        this.ngaysinh = ngaysinh;
+        this.quequan = quequan;
+        this.cccd = cccd;
+    }
+
+    public String getCccd() {
+        if (cccd == null) {
+            cccd = "";
+        }
+        return cccd;
+    }
+
+    public String getNgaysinh() {
+        if (ngaysinh == null) {
+            ngaysinh = "";
+        }
+        return ngaysinh;
+    }
+
+    public String getQuequan() {
+        if (quequan == null) {
+            quequan = "";
+        }
+        return quequan;
     }
 
     public int getIdStudent() {
@@ -38,6 +68,18 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setNgaysinh(String ngaysinh) {
+        this.ngaysinh = ngaysinh;
+    }
+
+    public void setQuequan(String quequan) {
+        this.quequan = quequan;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
     }
 
     public String getClassRoom() {

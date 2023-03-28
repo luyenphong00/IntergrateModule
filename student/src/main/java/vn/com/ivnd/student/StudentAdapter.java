@@ -87,7 +87,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentH
 
         public void binDataStudent(Student student) {
             tvName.setText(student.getName());
-            tvClass.setText(student.getClassRoom());
+            tvClass.setText(student.getClassRoom() + "____" + student.getCccd());
         }
     }
 

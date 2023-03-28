@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,25 +66,39 @@ public class DialogEdit extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final EditText edtName, edtClassRoom;
-        Button btnEdit,btnCancel;
+        final EditText edtName, edtClassRoom, edtNS, edtQQ, edtCCCD;
+        Button btnEdit, btnCancel;
         edtName = getView().findViewById(R.id.edt_name);
         edtClassRoom = getView().findViewById(R.id.edt_class);
+        edtNS = getView().findViewById(R.id.ns);
+        edtQQ = getView().findViewById(R.id.qq);
+        edtCCCD = getView().findViewById(R.id.cccd);
         btnEdit = getView().findViewById(R.id.btn_edit);
         btnCancel = getView().findViewById(R.id.btn_cancel);
         edtName.setText(student.getName());
         edtClassRoom.setText(student.getClassRoom());
+        edtNS.setText(student.getNgaysinh());
+        edtQQ.setText(student.getQuequan());
+        edtCCCD.setText(student.getCccd());
         btnEdit.setOnClickListener(view1 -> {
             if (listener != null) {
-                listener.onClickEdit(edtName.getText().toString()
-                        , edtClassRoom.getText().toString());
-                dismiss();
+                if (!edtCCCD.getText().toString().isEmpty()){
+                    listener.onClickEdit(new Student(edtName.getText().toString(),
+                            edtClassRoom.getText().toString(),
+                            edtNS.getText().toString(),
+                            edtQQ.getText().toString(),
+                            edtCCCD.getText().toString()));
+                    dismiss();
+                }else  {
+                    Toast.makeText(getContext(), "Căn cước công dân không được để trống", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         btnCancel.setOnClickListener(view12 -> dismiss());
     }
 
     public interface itemOnClick {
-        void onClickEdit(String name, String classRoom);
+        void onClickEdit(Student student);
     }
 }
