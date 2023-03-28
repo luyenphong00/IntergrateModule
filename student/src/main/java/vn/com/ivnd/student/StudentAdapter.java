@@ -15,11 +15,6 @@ import java.util.List;
 
 import vn.com.ivnd.student.model.Student;
 
-/**
- * Created by luyenphong on 10/9/2020.
- * 0358844343
- * luyenphong00@gmail.com
- */
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentHolder> {
 
     private List<Student> students;

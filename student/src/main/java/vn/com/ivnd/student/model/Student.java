@@ -4,11 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-/**
- * Created by luyenphong on 10/8/2020.
- * 0358844343
- * luyenphong00@gmail.com
- */
 
 @Entity(tableName = "Student")
 public class Student {

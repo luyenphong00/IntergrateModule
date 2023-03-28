@@ -8,11 +8,6 @@ import io.reactivex.schedulers.Schedulers;
 import vn.com.ivnd.student.database.AppDatabase;
 import vn.com.ivnd.student.model.Student;
 
-/**
- * Created by luyenphong on 10/13/2020.
- * 0358844343
- * luyenphong00@gmail.com
- */
 public class MainPresenter implements MainContract.Presenter {
     private MainContract.View view;
     private AppDatabase appDatabase;

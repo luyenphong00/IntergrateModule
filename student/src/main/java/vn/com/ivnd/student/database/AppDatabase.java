@@ -9,11 +9,6 @@ import androidx.room.RoomDatabase;
 import vn.com.ivnd.student.dao.StudentDao;
 import vn.com.ivnd.student.model.Student;
 
-/**
- * Created by luyenphong on 10/8/2020.
- * 0358844343
- * luyenphong00@gmail.com
- */
 @Database(entities = {Student.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 

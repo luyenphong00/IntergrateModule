@@ -4,11 +4,6 @@ import java.util.List;
 
 import vn.com.ivnd.student.model.Student;
 
-/**
- * Created by luyenphong on 10/13/2020.
- * 0358844343
- * luyenphong00@gmail.com
- */
 public interface MainContract {
     interface Model {
     }
