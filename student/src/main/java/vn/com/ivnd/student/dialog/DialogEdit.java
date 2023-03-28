@@ -83,11 +83,13 @@ public class DialogEdit extends DialogFragment {
         btnEdit.setOnClickListener(view1 -> {
             if (listener != null) {
                 if (!edtCCCD.getText().toString().isEmpty()){
-                    listener.onClickEdit(new Student(edtName.getText().toString(),
+                    Student studentUpdate = new Student(edtName.getText().toString(),
                             edtClassRoom.getText().toString(),
                             edtNS.getText().toString(),
                             edtQQ.getText().toString(),
-                            edtCCCD.getText().toString()));
+                            edtCCCD.getText().toString());
+                    studentUpdate.setIdStudent(this.student.getIdStudent());
+                    listener.onClickEdit(studentUpdate);
                     dismiss();
                 }else  {
                     Toast.makeText(getContext(), "Căn cước công dân không được để trống", Toast.LENGTH_SHORT).show();
