@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/item1"
-        android:icon="@drawable/remove"
+        android:icon="@drawable/delete"
         android:orderInCategory="100"
         android:title="Item1"
         app:showAsAction="always" />
