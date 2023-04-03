@@ -1,6 +1,8 @@
 package vn.com.ivnd.student;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -44,6 +46,23 @@ public class ModuleMainActivity extends AppCompatActivity implements MainContrac
         });
         binding.rclStudent.setAdapter(adapter);
         adapter.setStudents(students);
+
+        binding.searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                adapter.setStudents(adapter.searchStudent(editable.toString(), students));
+            }
+        });
 
         binding.imgAddStudent.setOnClickListener(view -> {
             DialogAdd dialogEdit = new DialogAdd(student -> presenter.insertStudent(student));
