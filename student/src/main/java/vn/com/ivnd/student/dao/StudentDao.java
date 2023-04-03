@@ -9,20 +9,20 @@ import androidx.room.Query;
 import java.util.List;
 
 import io.reactivex.Single;
-import vn.com.ivnd.student.model.Student;
+import vn.com.ivnd.student.model.Cosmetics;
 
 
 @Dao
 public interface StudentDao {
     @Insert(onConflict = REPLACE)
-    void insert(Student... items);
+    void insert(Cosmetics... items);
 
-    @Query("Select * from Student")
-    Single<List<Student>> findStudent();
+    @Query("Select * from Cosmetics")
+    Single<List<Cosmetics>> findStudent();
 
-    @Query("Delete from Student")
+    @Query("Delete from Cosmetics")
     void deleteAll();
 
-    @Query("Delete from Student where Student.idStudent=:id")
+    @Query("Delete from Cosmetics where Cosmetics.idCosmetics=:id")
     void deleteStudentById(int id);
 }

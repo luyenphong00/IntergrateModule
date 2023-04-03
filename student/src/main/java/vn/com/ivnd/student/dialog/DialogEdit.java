@@ -19,15 +19,15 @@ import androidx.fragment.app.DialogFragment;
 
 
 import vn.com.ivnd.student.R;
-import vn.com.ivnd.student.model.Student;
+import vn.com.ivnd.student.model.Cosmetics;
 
 public class DialogEdit extends DialogFragment {
 
-    private Student student;
+    private Cosmetics cosmetic;
     private itemOnClick listener;
 
-    public DialogEdit(Student student, itemOnClick listener) {
-        this.student = student;
+    public DialogEdit(Cosmetics cosmetic, itemOnClick listener) {
+        this.cosmetic = cosmetic;
         this.listener = listener;
     }
 
@@ -61,33 +61,29 @@ public class DialogEdit extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final EditText edtName, edtClassRoom, edtNS, edtQQ, edtCCCD;
+        final EditText edtName, edtGiaTien, edtHSD;
         Button btnEdit, btnCancel;
         edtName = getView().findViewById(R.id.edt_name);
-        edtClassRoom = getView().findViewById(R.id.edt_class);
-        edtNS = getView().findViewById(R.id.ns);
-        edtQQ = getView().findViewById(R.id.qq);
-        edtCCCD = getView().findViewById(R.id.cccd);
+        edtGiaTien = getView().findViewById(R.id.edt_class);
+        edtHSD = getView().findViewById(R.id.edtHSD);
         btnEdit = getView().findViewById(R.id.btn_edit);
         btnCancel = getView().findViewById(R.id.btn_cancel);
-        edtName.setText(student.getName());
-        edtClassRoom.setText(student.getClassRoom());
-        edtNS.setText(student.getNgaysinh());
-        edtQQ.setText(student.getQuequan());
-        edtCCCD.setText(student.getCccd());
+        edtName.setText(cosmetic.getTen());
+        edtGiaTien.setText(cosmetic.getGiatien());
+        edtHSD.setText(cosmetic.getHansudung());
+
         btnEdit.setOnClickListener(view1 -> {
             if (listener != null) {
-                if (!edtCCCD.getText().toString().isEmpty()){
-                    Student studentUpdate = new Student(edtName.getText().toString(),
-                            edtClassRoom.getText().toString(),
-                            edtNS.getText().toString(),
-                            edtQQ.getText().toString(),
-                            edtCCCD.getText().toString());
-                    studentUpdate.setIdStudent(this.student.getIdStudent());
+                String name = edtName.getText().toString();
+                String money = edtGiaTien.getText().toString();
+                String hsd = edtHSD.getText().toString();
+                if (!name.isEmpty()  && !money.isEmpty() && !hsd.isEmpty()){
+                    Cosmetics studentUpdate = new Cosmetics(name, money, hsd);
+                    studentUpdate.setIdCosmetics(this.cosmetic.getIdCosmetics());
                     listener.onClickEdit(studentUpdate);
                     dismiss();
                 }else  {
-                    Toast.makeText(getContext(), "Căn cước công dân không được để trống", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Cần đủ thông tin mỹ phẩm", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -96,6 +92,6 @@ public class DialogEdit extends DialogFragment {
     }
 
     public interface itemOnClick {
-        void onClickEdit(Student student);
+        void onClickEdit(Cosmetics student);
     }
 }

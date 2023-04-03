@@ -7,9 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import vn.com.ivnd.student.dao.StudentDao;
-import vn.com.ivnd.student.model.Student;
+import vn.com.ivnd.student.model.Cosmetics;
 
-@Database(entities = {Student.class}, version = 1)
+@Database(entities = {Cosmetics.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;

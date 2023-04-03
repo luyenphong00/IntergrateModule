@@ -17,13 +17,13 @@ import java.util.List;
 import vn.com.ivnd.student.databinding.ActivityModuleMainBinding;
 import vn.com.ivnd.student.dialog.DialogAdd;
 import vn.com.ivnd.student.dialog.DialogEdit;
-import vn.com.ivnd.student.model.Student;
+import vn.com.ivnd.student.model.Cosmetics;
 
 public class ModuleMainActivity extends AppCompatActivity implements MainContract.View {
 
     private ActivityModuleMainBinding binding;
-    private StudentAdapter adapter;
-    private List<Student> students = new ArrayList<>();
+    private CosmeticsAdapter adapter;
+    private List<Cosmetics> cosmetics = new ArrayList<>();
     private MainPresenter presenter;
 
     @Override
@@ -32,9 +32,9 @@ public class ModuleMainActivity extends AppCompatActivity implements MainContrac
         binding = DataBindingUtil.setContentView(this, R.layout.activity_module_main);
         presenter = new MainPresenter(ModuleMainActivity.this);
         presenter.retrieveListStudent();
-        adapter = new StudentAdapter(students, ModuleMainActivity.this, new StudentAdapter.onClickItem() {
+        adapter = new CosmeticsAdapter(cosmetics, ModuleMainActivity.this, new CosmeticsAdapter.onClickItem() {
             @Override
-            public void onClickEdit(Student student) {
+            public void onClickEdit(Cosmetics student) {
                 DialogEdit dialogEdit = new DialogEdit(student, student1 -> presenter.editStudent(student1));
                 dialogEdit.show(getSupportFragmentManager(), dialogEdit.getTag());
             }
@@ -45,7 +45,7 @@ public class ModuleMainActivity extends AppCompatActivity implements MainContrac
             }
         });
         binding.rclStudent.setAdapter(adapter);
-        adapter.setStudents(students);
+        adapter.setCosmetics(cosmetics);
 
         binding.searchBar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -60,20 +60,20 @@ public class ModuleMainActivity extends AppCompatActivity implements MainContrac
 
             @Override
             public void afterTextChanged(Editable editable) {
-                adapter.setStudents(adapter.searchStudent(editable.toString(), students));
+                adapter.setCosmetics(adapter.searchStudent(editable.toString(), cosmetics));
             }
         });
 
-        binding.imgAddStudent.setOnClickListener(view -> {
+        binding.ivAddCosmetics.setOnClickListener(view -> {
             DialogAdd dialogEdit = new DialogAdd(student -> presenter.insertStudent(student));
             dialogEdit.show(getSupportFragmentManager(), dialogEdit.getTag());
         });
     }
 
     @Override
-    public void retrieveListStudentSuccess(List<Student> listData) {
-        students.clear();
-        students.addAll(listData);
+    public void retrieveListStudentSuccess(List<Cosmetics> listData) {
+        cosmetics.clear();
+        cosmetics.addAll(listData);
         adapter.notifyDataSetChanged();
     }
 

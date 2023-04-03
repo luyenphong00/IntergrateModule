@@ -2,21 +2,21 @@ package vn.com.ivnd.student;
 
 import java.util.List;
 
-import vn.com.ivnd.student.model.Student;
+import vn.com.ivnd.student.model.Cosmetics;
 
 public interface MainContract {
     interface Model {
     }
 
     interface View {
-        void retrieveListStudentSuccess(List<Student> listData);
+        void retrieveListStudentSuccess(List<Cosmetics> listData);
         void updateStudentSuccess(String message);
     }
 
     interface Presenter {
-        void insertStudent(Student student);
+        void insertStudent(Cosmetics student);
         void deleteStudent(int id);
-        void editStudent(Student student);
+        void editStudent(Cosmetics student);
         void retrieveListStudent();
         void deleteAll();
     }

@@ -6,7 +6,7 @@ import android.content.Context;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import vn.com.ivnd.student.database.AppDatabase;
-import vn.com.ivnd.student.model.Student;
+import vn.com.ivnd.student.model.Cosmetics;
 
 public class MainPresenter implements MainContract.Presenter {
     private MainContract.View view;
@@ -18,7 +18,7 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void insertStudent(Student student) {
+    public void insertStudent(Cosmetics student) {
         appDatabase.studentDao().insert(student);
         appDatabase.studentDao().findStudent();
         view.updateStudentSuccess("Thêm thành công");
@@ -31,9 +31,9 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void editStudent(Student student) {
+    public void editStudent(Cosmetics student) {
         appDatabase.studentDao().insert(student);
-        view.updateStudentSuccess("Sửa thành công sinh viên có id " + student.getIdStudent());
+        view.updateStudentSuccess("Cập nhật thành công");
     }
 
     @SuppressLint("CheckResult")
@@ -49,6 +49,6 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void deleteAll() {
         appDatabase.studentDao().deleteAll();
-        view.updateStudentSuccess("Xóa thành công tất cả sinh viên");
+        view.updateStudentSuccess("Xóa thành công");
     }
 }

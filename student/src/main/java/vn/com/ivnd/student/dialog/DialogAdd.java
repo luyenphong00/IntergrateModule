@@ -18,11 +18,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import vn.com.ivnd.student.R;
-import vn.com.ivnd.student.model.Student;
+import vn.com.ivnd.student.model.Cosmetics;
 
 public class DialogAdd extends DialogFragment {
 
-    private Student student;
+    private Cosmetics cosmetic;
     private final itemOnClick listener;
 
     public DialogAdd(itemOnClick listener) {
@@ -59,28 +59,24 @@ public class DialogAdd extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final EditText edtName, edtClassRoom, edtNS, edtQQ, edtCCCD;
+        final EditText tenMypam, giatien, hansudung;
         Button btnEdit,btnCancel;
-        edtName = getView().findViewById(R.id.edt_name);
-        edtClassRoom = getView().findViewById(R.id.edt_class);
-        edtNS = getView().findViewById(R.id.ns);
-        edtQQ = getView().findViewById(R.id.qq);
-        edtCCCD = getView().findViewById(R.id.cccd);
+        tenMypam = getView().findViewById(R.id.edt_name);
+        giatien = getView().findViewById(R.id.edt_class);
+        hansudung = getView().findViewById(R.id.edtHSD);
         btnEdit = getView().findViewById(R.id.btn_edit);
         btnCancel = getView().findViewById(R.id.btn_cancel);
         btnEdit.setOnClickListener(view1 -> {
             if (listener != null) {
-                String name = edtName.getText().toString();
-                String classRoom = edtClassRoom.getText().toString();
-                String ngaysinh = edtNS.getText().toString();
-                String quequan = edtQQ.getText().toString();
-                String cccd = edtCCCD.getText().toString();
-                if (!name.isEmpty() && !classRoom.isEmpty() && !ngaysinh.isEmpty() && !quequan.isEmpty() && !cccd.isEmpty()){
-                    student = new Student(name, classRoom, ngaysinh, quequan, cccd);
-                    listener.onClickAdd(student);
+                String name = tenMypam.getText().toString();
+                String money = giatien.getText().toString();
+                String hsd = hansudung.getText().toString();
+                if (!name.isEmpty()  && !money.isEmpty() && !hsd.isEmpty()){
+                    cosmetic = new Cosmetics(name, money, hsd);
+                    listener.onClickAdd(cosmetic);
                     dismiss();
                 }else  {
-                    Toast.makeText(requireContext(), "Nhập đủ dữ liệu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Thiếu thông tin mỹ phẩm", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -88,6 +84,6 @@ public class DialogAdd extends DialogFragment {
     }
 
     public interface itemOnClick {
-        void onClickAdd(Student student);
+        void onClickAdd(Cosmetics student);
     }
 }
