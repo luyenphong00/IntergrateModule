@@ -10,7 +10,6 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +35,8 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentH
     public List<Student> searchStudent(String textQuery, List<Student> students) {
         List<Student> listAlbumSearch = new ArrayList<>();
         for (Student movies : students) {
-            if (movies.getName().toLowerCase().contains(textQuery.toLowerCase())) {
+            if (movies.getName().toLowerCase().contains(textQuery.toLowerCase())
+                    || movies.getClassRoom().toLowerCase().contains(textQuery.toLowerCase())) {
                 listAlbumSearch.add(movies);
             }
         }

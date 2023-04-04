@@ -1,13 +1,9 @@
 package vn.com.ivnd.student;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -30,6 +26,9 @@ public class ModuleMainActivity extends AppCompatActivity implements MainContrac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_module_main);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         presenter = new MainPresenter(ModuleMainActivity.this);
         presenter.retrieveListStudent();
         adapter = new StudentAdapter(students, ModuleMainActivity.this, new StudentAdapter.onClickItem() {
@@ -47,27 +46,18 @@ public class ModuleMainActivity extends AppCompatActivity implements MainContrac
         binding.rclStudent.setAdapter(adapter);
         adapter.setStudents(students);
 
-        binding.searchBar.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                adapter.setStudents(adapter.searchStudent(editable.toString(), students));
-            }
-        });
-
         binding.imgAddStudent.setOnClickListener(view -> {
             DialogAdd dialogEdit = new DialogAdd(student -> presenter.insertStudent(student));
             dialogEdit.show(getSupportFragmentManager(), dialogEdit.getTag());
         });
+
+        binding.include.imgDelete.setOnClickListener(view -> presenter.deleteAll());
+
+        binding.include.ivLogout.setOnClickListener(view -> {
+            finish();
+        });
+
+        binding.include.search.setOnClickListener(view -> startActivity(new Intent(this, FilterStudentActivity.class)));
     }
 
     @Override
@@ -84,20 +74,4 @@ public class ModuleMainActivity extends AppCompatActivity implements MainContrac
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.item1) {
-            presenter.deleteAll();
-        } else if (id == R.id.item2) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

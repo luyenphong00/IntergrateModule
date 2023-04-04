@@ -19,6 +19,7 @@
 
         <EditText
             android:padding="10dp"
+            android:background="@drawable/border_edittext"
             android:hint="Tên tài khoản"
             android:id="@+id/edt_username"
             android:layout_width="match_parent"
@@ -38,14 +39,18 @@
             android:id="@+id/edt_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/border_edittext"
             android:layout_marginTop="5dp"
             android:hint="Nhập mật khẩu" />
 
         <Button
             android:id="@+id/submit"
             android:background="#00C4FF"
+            android:textColor="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:text="Đăng nhập" />
 

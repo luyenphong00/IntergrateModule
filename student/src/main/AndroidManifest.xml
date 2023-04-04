@@ -6,15 +6,24 @@
 
     <application>
         <activity
+            android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize"
             android:usesCleartextTraffic="true"
             android:name=".LoginActivity"
             android:exported="true" />
 
         <activity
+            android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize"
             android:usesCleartextTraffic="true"
             android:name=".ModuleMainActivity"
+            android:exported="true" />
+
+        <activity
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"
+            android:usesCleartextTraffic="true"
+            android:name=".FilterStudentActivity"
             android:exported="true" />
     </application>
 
