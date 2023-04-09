@@ -12,10 +12,6 @@ import vn.com.ivnd.student.databinding.ActivityFilterBinding
 import vn.com.ivnd.student.dialog.DialogEdit
 import vn.com.ivnd.student.model.Student
 
-/**
- * Create by LuyenPhong on 4/4/2023
- * phone 0358844343
- */
 class FilterStudentActivity : AppCompatActivity(), MainContract.View {
 
     private lateinit var binding: ActivityFilterBinding
